@@ -21,19 +21,9 @@ jobs:
       - name: Setup .NET
         uses: actions/setup-dotnet@v1
         with:
-          dotnet-version: '6.0.x'
-      - name: Display .NET information
-        run: dotnet --info
-      - name: List directory contents
-        run: dir /s
+          dotnet-version: '6.0.x'  # Adjust this to your project's .NET version
       - name: Restore NuGet packages
-        run: |
-          nuget restore
-          dotnet restore
-        continue-on-error: true
-      - name: Install specific System.Text.Json package
-        run: dotnet add GameSYS/GameSYS.csproj package System.Text.Json --version 6.0.0
-        continue-on-error: true
+        run: dotnet restore
       - name: Cache SonarCloud packages
         uses: actions/cache@v4
         with:
